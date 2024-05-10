@@ -1,0 +1,15 @@
+@use 'reset';
+@use 'abstracts/variables';
+@use 'themes/light';
+@use 'themes/dark';
+
+html {
+  font: var(--font-m);
+
+  background: var(--bg-color);
+  color: var(--primary-color);
+}
+
+.app {
+  min-height: 100dvh;
+}
