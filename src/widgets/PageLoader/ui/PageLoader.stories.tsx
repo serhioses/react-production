@@ -26,7 +26,7 @@ const meta = {
     variant: { control: 'text' },
   },
   args: {
-    size: 'xl',
+    size: 'sm',
   },
 } satisfies Meta<typeof PageLoader>;
 

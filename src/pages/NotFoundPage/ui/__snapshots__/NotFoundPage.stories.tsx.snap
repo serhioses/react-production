@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pages/NotFoundPage Basic smoke-test 1`] = `
+<div class="css-tkevr6">
+  <p class="chakra-text css-1bsg0uq">
+    Page not found
+  </p>
+</div>
+<span id="__chakra_env"
+      hidden
+>
+</span>
+`;
