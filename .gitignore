@@ -16,3 +16,5 @@
 .DS_Store
 .vscode
 storybook-static
+build-storybook.log
+chromatic.config.json

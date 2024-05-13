@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Widgets/PageLoader Basic smoke-test 1`] = `
+<div class="css-1d27zfz">
+  <div class="chakra-spinner css-ffycbt">
+    <span class="css-8b45rq">
+      Loading...
+    </span>
+  </div>
+</div>
+<span id="__chakra_env"
+      hidden
+>
+</span>
+`;
