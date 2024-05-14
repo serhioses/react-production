@@ -1,16 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Navbar } from 'widgets/Navbar/ui/Navbar';
+import { AboutPage } from 'pages/AboutPage/ui/AboutPage';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-
 const meta = {
-  title: 'Widgets/Navbar',
-  component: Navbar,
+  title: 'Pages/AboutPage',
+  component: AboutPage,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
-  parameters: { actions: { argTypesRegex: '^on.*' } },
-} satisfies Meta<typeof Navbar>;
+} satisfies Meta<typeof AboutPage>;
 
 export default meta;
 
@@ -18,7 +16,7 @@ type Story = StoryObj<typeof meta>;
 
 const Template: Story = {
   render: (args) => {
-    return <Navbar {...args} />;
+    return <AboutPage {...args} />;
   },
 };
 

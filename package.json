@@ -12,7 +12,8 @@
     "test": "jest --verbose",
     "storybook": "storybook dev -p 6006 -c ./src/storybook",
     "build-storybook": "storybook build -c ./src/storybook",
-    "test-storybook": "test-storybook -c ./src/storybook"
+    "test-storybook": "test-storybook -c ./src/storybook",
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "keywords": [],
   "author": "",
