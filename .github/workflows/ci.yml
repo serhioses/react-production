@@ -15,7 +15,7 @@ name: Continuous Integration
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, develop ]
   pull_request:
 
 # jobs is a list of jobs that will be executed in parallel on different runners
