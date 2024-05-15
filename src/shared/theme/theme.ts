@@ -5,7 +5,7 @@ const { Alert, Button, Link, Spinner } = chakraTheme.components;
 export const theme = extendBaseTheme(
   {
     colors: {
-      primary: chakraTheme.colors.telegram,
+      primary: chakraTheme.colors.blue,
     },
     styles: {
       global: {

@@ -1,8 +1,7 @@
 import { useState } from 'react';
 
-import { Box, Button } from '@chakra-ui/react';
-
-import GradeIcon from 'shared/assets/icons/grade.svg';
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { Box, IconButton } from '@chakra-ui/react';
 
 export function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
@@ -16,15 +15,25 @@ export function Sidebar() {
       sx={{
         width: collapsed ? '80px' : '300px',
         height: 'calc(100dvh - 50px)',
-        background: 'black',
         position: 'relative',
         transition: '0.1s ease-in',
+        boxShadow: 'xl',
       }}
       data-testid="sidebar"
     >
-      <Button onClick={toggleCollapsed} data-testid="sidebar-toggle">
-        <GradeIcon />
-      </Button>
+      <IconButton
+        aria-label="toggle sidebar"
+        onClick={toggleCollapsed}
+        data-testid="sidebar-toggle"
+        sx={{
+          position: 'absolute',
+          insetBlockEnd: '24px',
+          insetInlineEnd: 0,
+          transform: 'translateX(50%)',
+          zIndex: 1,
+        }}
+        icon={collapsed ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+      />
     </Box>
   );
 }
