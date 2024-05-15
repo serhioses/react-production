@@ -11,5 +11,5 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext"
   },
-  "include": ["webpack.config.ts", "configs", "jest.config.ts"]
+  "include": ["webpack.config.ts", "configs", "jest.config.ts", "generateChromaticConfig.js"]
 }
