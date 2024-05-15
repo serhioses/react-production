@@ -102,6 +102,7 @@ module.exports = {
           'src/tests/**/*',
           'src/**/*.stories.{ts,tsx}',
           'src/storybook/*',
+          'webpack.config.ts',
         ],
       },
     ],
