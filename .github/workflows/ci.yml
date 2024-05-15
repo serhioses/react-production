@@ -29,7 +29,7 @@ jobs:
     steps:
       - name: Checkout code
       # uses is used to specify the action that will be executed. here we are using checkout action to checkout the code.
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
         # with is use to pass the input to the action. here we are passing the input fetch-depth to the checkout action. fetch depth is used to specify the number of commits to fetch. 0 means all history for all branches and tags.
         with:
           fetch-depth:
