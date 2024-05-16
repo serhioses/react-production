@@ -7,7 +7,7 @@ import { buildResolvers } from './build-resolvers';
 import { TBuildOptions } from './types/config';
 
 export function buildWebpackConfig(options: TBuildOptions): Configuration {
-  const { mode, paths, port, isDev } = options;
+  const { mode, paths, port, isDev, runAnalyzer } = options;
 
   return {
     mode,
@@ -21,7 +21,7 @@ export function buildWebpackConfig(options: TBuildOptions): Configuration {
       rules: buildLoaders(isDev),
     },
     resolve: buildResolvers(paths.modules),
-    plugins: buildPlugins(paths.html, isDev),
+    plugins: buildPlugins(paths.html, isDev, runAnalyzer),
     devtool: isDev ? 'inline-source-map' : undefined,
     devServer: isDev ? buildDevServer(port) : undefined,
   };

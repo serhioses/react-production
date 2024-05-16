@@ -3,7 +3,11 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { DefinePlugin, ProgressPlugin, WebpackPluginInstance } from 'webpack';
 import BundleAnalyzer from 'webpack-bundle-analyzer';
 
-export function buildPlugins(htmlPath: string, isDev: boolean): WebpackPluginInstance[] {
+export function buildPlugins(
+  htmlPath: string,
+  isDev: boolean,
+  runAnalyzer?: boolean,
+): WebpackPluginInstance[] {
   const plugins: WebpackPluginInstance[] = [
     new HtmlWebpackPlugin({
       template: htmlPath,
@@ -12,9 +16,6 @@ export function buildPlugins(htmlPath: string, isDev: boolean): WebpackPluginIns
 
   if (isDev) {
     plugins.push(new ProgressPlugin());
-    plugins.push(
-      new BundleAnalyzer.BundleAnalyzerPlugin({ openAnalyzer: false, analyzerMode: 'static' }),
-    );
   } else {
     plugins.push(
       new MiniCssExtractPlugin({
@@ -22,6 +23,10 @@ export function buildPlugins(htmlPath: string, isDev: boolean): WebpackPluginIns
         chunkFilename: 'css/[name].[contenthash:8].css',
       }),
     );
+  }
+
+  if (runAnalyzer) {
+    plugins.push(new BundleAnalyzer.BundleAnalyzerPlugin());
   }
 
   plugins.push(
