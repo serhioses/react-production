@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env TS_NODE_PROJECT=\"tsconfig.node.json\" webpack serve --env port=3005",
-    "build:prod": "cross-env TS_NODE_PROJECT=\"tsconfig.node.json\" webpack --env mode=production",
-    "build:dev": "cross-env TS_NODE_PROJECT=\"tsconfig.node.json\" webpack --env mode=development",
+    "webpack-analyze:dev": "cross-env TS_NODE_PROJECT=\"tsconfig.node.json\" webpack --mode development --env runAnalyzer=true",
+    "webpack-analyze:prod": "cross-env TS_NODE_PROJECT=\"tsconfig.node.json\" webpack --mode production --env runAnalyzer=true",
+    "build:prod": "cross-env TS_NODE_PROJECT=\"tsconfig.node.json\" webpack --mode production",
+    "build:dev": "cross-env TS_NODE_PROJECT=\"tsconfig.node.json\" webpack --mode development",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint --fix \"**/*.{ts,tsx}\"",
     "test": "jest --verbose",

@@ -1,10 +1,10 @@
 import path from 'path';
 
 import { buildWebpackConfig } from './configs/build/webpack/build-webpack-config';
-import { TBuildEnv, TBuildOptions } from './configs/build/webpack/types/config';
+import { TBuildArgv, TBuildEnv, TBuildOptions } from './configs/build/webpack/types/config';
 
-export default (env: TBuildEnv) => {
-  const mode = env.mode ?? 'development';
+export default (env: TBuildEnv, argv: TBuildArgv) => {
+  const mode = argv.mode ?? 'development';
   const isDev = mode === 'development';
   const port = env.port ?? 3004;
 
@@ -18,6 +18,7 @@ export default (env: TBuildEnv) => {
     },
     isDev,
     port,
+    runAnalyzer: env.runAnalyzer,
   };
 
   const config = buildWebpackConfig(options);
