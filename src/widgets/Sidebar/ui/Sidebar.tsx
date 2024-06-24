@@ -32,7 +32,7 @@ export function Sidebar() {
           transform: 'translateX(50%)',
           zIndex: 1,
         }}
-        icon={collapsed ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+        icon={collapsed ? <ChevronRightIcon /> : <ChevronLeftIcon />}
       />
     </Box>
   );
