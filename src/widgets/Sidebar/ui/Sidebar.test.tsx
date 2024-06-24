@@ -2,9 +2,11 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 import { Sidebar } from 'widgets/Sidebar/ui/Sidebar';
 
+import { renderWithTranslation } from 'tests/renderWithTranslation';
+
 describe('Sidebar', () => {
   test('render', () => {
-    render(<Sidebar />);
+    renderWithTranslation(<Sidebar />);
     expect(screen.getByTestId('sidebar')).toBeInTheDocument();
   });
 

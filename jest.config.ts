@@ -73,7 +73,7 @@ const config: Config = {
   // maxWorkers: "50%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  moduleDirectories: ['node_modules', 'src'],
+  moduleDirectories: ['src', 'node_modules'],
 
   // An array of file extensions your modules use
   moduleFileExtensions: ['js', 'ts', 'tsx'],
@@ -82,6 +82,7 @@ const config: Config = {
   moduleNameMapper: {
     '\\.(svg)$': '<rootDir>/src/__mocks__/file-mock.tsx',
     '\\.(s)?css$': 'identity-obj-proxy',
+    '^entities/(.*)$': '<rootDir>/src/entities/$1', // Alias for local entities so that Jest looks for a local module first
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -176,7 +177,7 @@ const config: Config = {
   // unmockedModulePathPatterns: undefined,
 
   // Indicates whether each individual test should be reported during the run
-  // verbose: undefined,
+  verbose: true,
 
   // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
   // watchPathIgnorePatterns: [],

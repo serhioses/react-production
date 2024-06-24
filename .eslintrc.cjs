@@ -77,6 +77,7 @@ module.exports = {
         },
       },
     ],
+    'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state'] }],
     'react/jsx-boolean-value': ['error', 'always'],
     'react/require-default-props': 0,
     'react/react-in-jsx-scope': 0,
@@ -92,6 +93,10 @@ module.exports = {
     'import/no-unresolved': 'error',
     'import/prefer-default-export': 'off',
     '@typescript-eslint/no-unused-expressions': 'off',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-explicit-any': 'warn',
+    'i18next/no-literal-string': 'warn',
     'import/no-extraneous-dependencies': [
       'error',
       {

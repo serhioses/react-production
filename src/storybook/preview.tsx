@@ -1,5 +1,6 @@
 import { Suspense, useEffect } from 'react';
 import { I18nContext } from 'react-i18next';
+import { Provider as ReduxProvider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 
 import { ChakraBaseProvider, ColorModeContext, useColorMode } from '@chakra-ui/react';
@@ -8,6 +9,8 @@ import { Callback, TFunction } from 'i18next';
 
 import i18n from 'shared/configs/i18n/i18n';
 import { theme } from 'shared/theme/theme';
+
+import { createStore } from 'app/providers/StoreProvider/public-api';
 
 const originalChangeLanguage = i18n.changeLanguage;
 
@@ -37,6 +40,8 @@ function ColorMode(props: ColorModeProps) {
   return props.children;
 }
 
+const store = createStore();
+
 const preview: Preview = {
   parameters: {
     controls: {
@@ -60,17 +65,19 @@ const preview: Preview = {
                 setColorMode: (value) => value,
               }}
             >
-              <MemoryRouter>
-                <Suspense fallback={<p>Loading translations...</p>}>
-                  <I18nContext.Provider
-                    value={{
-                      i18n,
-                    }}
-                  >
-                    <Story />
-                  </I18nContext.Provider>
-                </Suspense>
-              </MemoryRouter>
+              <ReduxProvider store={store}>
+                <MemoryRouter>
+                  <Suspense fallback={<p>Loading translations...</p>}>
+                    <I18nContext.Provider
+                      value={{
+                        i18n,
+                      }}
+                    >
+                      <Story />
+                    </I18nContext.Provider>
+                  </Suspense>
+                </MemoryRouter>
+              </ReduxProvider>
             </ColorModeContext.Provider>
           </ColorMode>
         </ChakraBaseProvider>
