@@ -52,7 +52,7 @@ module.exports = {
     sourceType: 'module',
     project: ['./tsconfig.json', './tsconfig.node.json'],
   },
-  ignorePatterns: ['.eslintrc.cjs', 'generateChromaticConfig.js'],
+  ignorePatterns: ['.eslintrc.cjs', 'generateChromaticConfig.js', 'json-server/**/*'],
   plugins: ['import', '@typescript-eslint', 'react', 'css-import-order', 'i18next', 'prettier'],
   settings: {
     'import/resolver': {
