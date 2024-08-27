@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
 export function AboutPage() {
-  const { t } = useTranslation();
+  const { t } = useTranslation('aboutPage');
 
   return (
     <div>
-      <h1>{t('aboutPage')}</h1>
+      <h1>{t('title')}</h1>
     </div>
   );
 }

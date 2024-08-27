@@ -18,7 +18,9 @@ const originalChangeLanguage = i18n.changeLanguage;
 const mockChangeLanguage = (
   _?: string,
   callback?: Callback,
-): Promise<TFunction<'translation', undefined>> => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+): Promise<TFunction<'common', undefined>> => {
   return originalChangeLanguage.call(i18n, 'en', callback);
 };
 

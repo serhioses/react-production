@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Center, Text } from '@chakra-ui/react';
 
 export function NotFoundPage() {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   return (
     <Center height="100%">
