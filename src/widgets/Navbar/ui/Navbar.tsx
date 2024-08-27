@@ -12,9 +12,12 @@ import {
   Button,
   HStack,
   StackDivider,
+  useDisclosure,
 } from '@chakra-ui/react';
 
 import { ERoutes } from 'shared/enums/routes';
+
+import { LoginModal } from 'features/AuthByUsername/public-api';
 
 type TNavbarProps = {
   sx?: SystemStyleObject;
@@ -22,7 +25,8 @@ type TNavbarProps = {
 
 export function Navbar({ sx }: TNavbarProps) {
   const { toggleColorMode, colorMode } = useColorMode();
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation('header');
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   function changeLang(lng: string): void {
     if (lng !== i18n.language) {
@@ -60,7 +64,7 @@ export function Navbar({ sx }: TNavbarProps) {
         icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
         aria-label="Toggle theme"
       />
-      <HStack divider={<StackDivider />}>
+      <HStack divider={<StackDivider />} marginInlineEnd={8}>
         <Button
           size="sm"
           variant="link"
@@ -80,6 +84,10 @@ export function Navbar({ sx }: TNavbarProps) {
           RU
         </Button>
       </HStack>
+      <Button onClick={onOpen} variant="link" color="inherit" sx={{ textDecoration: 'underline' }}>
+        {t('login', { ns: 'common' })}
+      </Button>
+      <LoginModal isOpen={isOpen} onClose={onClose} />
     </Box>
   );
 }

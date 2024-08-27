@@ -1,6 +1,6 @@
 import { extendBaseTheme, theme as chakraTheme, withDefaultColorScheme } from '@chakra-ui/react';
 
-const { Alert, Button, Link, Spinner } = chakraTheme.components;
+const { Alert, Button, Link, Spinner, Modal, Input } = chakraTheme.components;
 
 export const theme = extendBaseTheme(
   {
@@ -26,6 +26,8 @@ export const theme = extendBaseTheme(
       Button,
       Link,
       Spinner,
+      Modal,
+      Input,
     },
   },
   withDefaultColorScheme({ colorScheme: 'primary' }),

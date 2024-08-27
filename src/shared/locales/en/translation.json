@@ -1,0 +1,17 @@
+{
+  "homePage": {
+    "title": "Home page"
+  },
+  "aboutPage": {
+    "title": "About page"
+  },
+  "header": {
+    "home": "Home",
+    "about": "About"
+  },
+  "common": {
+    "notFoundPage": "Page not found",
+    "errorFallbackTitle": "Something went wrong...",
+    "login": "Login"
+  }
+}
