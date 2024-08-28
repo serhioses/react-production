@@ -15,6 +15,12 @@ export default (env: TBuildEnv, argv: TBuildArgv) => {
       output: path.resolve(__dirname, 'build'),
       html: path.resolve(__dirname, 'public', 'index.html'),
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      copyPatterns: [
+        {
+          from: path.resolve(__dirname, 'public', 'locales'),
+          to: path.resolve(__dirname, 'build', 'locales'),
+        },
+      ],
     },
     isDev,
     port,

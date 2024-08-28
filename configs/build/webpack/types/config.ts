@@ -1,9 +1,12 @@
+import { Pattern } from 'copy-webpack-plugin';
+
 export type TBuildMode = 'production' | 'development';
 export type TBuildPaths = {
   entry: string;
   output: string;
   html: string;
   modules: string[];
+  copyPatterns: Pattern[];
 };
 
 export type TBuildOptions = {
