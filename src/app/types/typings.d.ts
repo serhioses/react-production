@@ -1,5 +1,5 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable @typescript-eslint/naming-convention */
+import Resources from './resources.generated';
+
 declare module '*.scss' {
   interface IStyles {
     [className: string]: string;
@@ -19,3 +19,9 @@ declare module '*.png';
 declare module '*.gif';
 
 declare const __IS_DEV__: boolean;
+
+declare module 'i18next' {
+  interface CustomTypeOptions {
+    resources: Resources;
+  }
+}

@@ -2,23 +2,19 @@ import { initReactI18next } from 'react-i18next';
 
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import Backend, { HttpBackendOptions } from 'i18next-http-backend';
 
-import en from 'shared/locales/en/translation.json';
-import ru from 'shared/locales/ru/translation.json';
-
-// TODO: add multiple files and parse types
 i18n
+  .use(Backend)
   .use(LanguageDetector)
   .use(initReactI18next)
-  .init({
+  .init<HttpBackendOptions>({
     supportedLngs: ['en', 'ru'],
     fallbackLng: 'en',
     debug: process.env.NODE_ENV === 'development',
-    resources: {
-      en,
-      ru,
+    backend: {
+      loadPath: 'locales/{{lng}}/{{ns}}.json',
     },
-    defaultNS: 'common',
     interpolation: {
       escapeValue: false,
     },
@@ -26,10 +22,3 @@ i18n
 
 // eslint-disable-next-line no-restricted-exports
 export default i18n;
-
-declare module 'i18next' {
-  interface CustomTypeOptions {
-    defaultNS: 'common';
-    resources: typeof en;
-  }
-}

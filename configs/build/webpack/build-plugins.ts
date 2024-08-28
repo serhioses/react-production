@@ -1,3 +1,4 @@
+import CopyPlugin, { Pattern } from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { DefinePlugin, ProgressPlugin, WebpackPluginInstance } from 'webpack';
@@ -5,12 +6,16 @@ import BundleAnalyzer from 'webpack-bundle-analyzer';
 
 export function buildPlugins(
   htmlPath: string,
+  copyPatterns: Pattern[],
   isDev: boolean,
   runAnalyzer?: boolean,
 ): WebpackPluginInstance[] {
   const plugins: WebpackPluginInstance[] = [
     new HtmlWebpackPlugin({
       template: htmlPath,
+    }),
+    new CopyPlugin({
+      patterns: copyPatterns,
     }),
   ];
 

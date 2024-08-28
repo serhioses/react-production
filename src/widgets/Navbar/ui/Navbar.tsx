@@ -25,7 +25,7 @@ type TNavbarProps = {
 
 export function Navbar({ sx }: TNavbarProps) {
   const { toggleColorMode, colorMode } = useColorMode();
-  const { t, i18n } = useTranslation('header');
+  const { t, i18n } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   function changeLang(lng: string): void {
@@ -62,7 +62,7 @@ export function Navbar({ sx }: TNavbarProps) {
         colorScheme={colorMode === 'light' ? 'gray' : ''}
         onClick={toggleColorMode}
         icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-        aria-label="Toggle theme"
+        aria-label={t('toggleTheme')}
       />
       <HStack divider={<StackDivider />} marginInlineEnd={8}>
         <Button
@@ -85,7 +85,7 @@ export function Navbar({ sx }: TNavbarProps) {
         </Button>
       </HStack>
       <Button onClick={onOpen} variant="link" color="inherit" sx={{ textDecoration: 'underline' }}>
-        {t('login', { ns: 'common' })}
+        {t('login')}
       </Button>
       <LoginModal isOpen={isOpen} onClose={onClose} />
     </Box>
