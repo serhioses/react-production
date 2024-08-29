@@ -1,4 +1,6 @@
+import { Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
@@ -17,7 +19,11 @@ import {
 
 import { ERoutes } from 'shared/enums/routes';
 
-import { LoginModal } from 'features/AuthByUsername/public-api';
+import { selectUserAuthData, userActions } from 'entities/User/public-api';
+
+import { LoginModalLazy } from 'features/AuthByUsername/public-api';
+
+import { useAppDispatch } from 'app/providers/StoreProvider/config/hooks';
 
 type TNavbarProps = {
   sx?: SystemStyleObject;
@@ -27,11 +33,17 @@ export function Navbar({ sx }: TNavbarProps) {
   const { toggleColorMode, colorMode } = useColorMode();
   const { t, i18n } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const authData = useSelector(selectUserAuthData);
+  const dispatch = useAppDispatch();
 
   function changeLang(lng: string): void {
     if (lng !== i18n.language) {
       i18n.changeLanguage(lng);
     }
+  }
+
+  function logOut(): void {
+    dispatch(userActions.resetAuthData());
   }
 
   return (
@@ -84,10 +96,30 @@ export function Navbar({ sx }: TNavbarProps) {
           RU
         </Button>
       </HStack>
-      <Button onClick={onOpen} variant="link" color="inherit" sx={{ textDecoration: 'underline' }}>
-        {t('login')}
-      </Button>
-      <LoginModal isOpen={isOpen} onClose={onClose} />
+      {authData ? (
+        <Button
+          onClick={logOut}
+          variant="link"
+          color="inherit"
+          sx={{ textDecoration: 'underline' }}
+        >
+          {t('logout')}
+        </Button>
+      ) : (
+        <>
+          <Button
+            onClick={onOpen}
+            variant="link"
+            color="inherit"
+            sx={{ textDecoration: 'underline' }}
+          >
+            {t('login')}
+          </Button>
+          <Suspense>
+            <LoginModalLazy isOpen={isOpen} onClose={onClose} />
+          </Suspense>
+        </>
+      )}
     </Box>
   );
 }

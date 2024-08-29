@@ -3,6 +3,21 @@
   "about": "О нас",
   "notFoundPage": "Страница не найдена",
   "errorFallbackTitle": "Что-то пошло не так...",
-  "login": "Войти",
-  "toggleTheme": "Сменить тему"
+  "login": "Вход",
+  "logout": "Выйти",
+  "toggleTheme": "Сменить тему",
+  "validation": {
+    "required": "Поле <{{fieldlName}}> обязательно",
+    "maxLength": "Макс. длина <{{fieldlName}}> {{charsNumber}}"
+  },
+  "fieldNames": {
+    "username": "Имя пользователя",
+    "password": "Пароль"
+  },
+  "errors": {
+    "wrongCredentials": "Неверные данные автооризации",
+    "genericError": "Произошла неизвестная ошибка",
+    "noDataRecived": "Данные не получены",
+    "errorDuringAuthRequest": "Ошибка во время запроса авторизации"
+  }
 }
