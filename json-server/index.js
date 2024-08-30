@@ -37,7 +37,7 @@ server.post('/login', (req, res) => {
     );
 
     if (userFromDb) {
-      return res.json(userFromDb);
+      return res.json({ id: userFromDb.id, username: userFromDb.username });
     }
 
     return res.status(403).json({ message: 'Wrong credentials' });

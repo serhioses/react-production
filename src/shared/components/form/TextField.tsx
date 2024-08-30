@@ -1,12 +1,13 @@
 import { Controller, useFormContext } from 'react-hook-form';
 
-import { Input, InputProps } from '@chakra-ui/react';
+import { Input, InputProps, FormControl, FormLabel, FormErrorMessage } from '@chakra-ui/react';
 
 type TTextFieldProps = InputProps & {
   name: string;
+  label?: string;
 };
 
-export function TextField({ name, ...rest }: TTextFieldProps) {
+export function TextField({ name, label, ...rest }: TTextFieldProps) {
   const { control } = useFormContext();
 
   return (
@@ -15,14 +16,11 @@ export function TextField({ name, ...rest }: TTextFieldProps) {
       name={name}
       render={({ field: { onChange, onBlur, value, ref }, fieldState: { error } }) => {
         return (
-          <Input
-            onChange={onChange}
-            value={value}
-            onBlur={onBlur}
-            ref={ref}
-            isInvalid={!!error}
-            {...rest}
-          />
+          <FormControl isInvalid={!!error}>
+            {!!label && <FormLabel>{label}</FormLabel>}
+            <Input onChange={onChange} value={value} onBlur={onBlur} ref={ref} {...rest} />
+            {error && <FormErrorMessage>{error.message}</FormErrorMessage>}
+          </FormControl>
         );
       }}
     />

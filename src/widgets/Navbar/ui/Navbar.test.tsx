@@ -2,11 +2,11 @@ import { screen } from '@testing-library/react';
 
 import { Navbar } from 'widgets/Navbar/ui/Navbar';
 
-import { renderWithRouter } from 'tests/renderWithRouter';
+import { renderComponent } from 'tests/renderComponent';
 
 describe('Navbar', () => {
   test('render', () => {
-    renderWithRouter(<Navbar />);
+    renderComponent(<Navbar />);
     expect(screen.getByTestId('navbar')).toBeInTheDocument();
   });
 });

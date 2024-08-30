@@ -3,9 +3,12 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter/public-api';
 import { userReducer } from 'entities/User/public-api';
 
+import { loginReducer } from 'features/AuthByUsername/public-api';
+
 const rootReducer = combineReducers({
   counter: counterReducer,
   user: userReducer,
+  login: loginReducer,
 });
 
 export const createStore = (preloadedState?: Partial<TRootState>) => {
