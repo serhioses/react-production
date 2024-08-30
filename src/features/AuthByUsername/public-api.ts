@@ -1,2 +1,2 @@
 export { LoginModalLazy } from 'features/AuthByUsername/ui/LoginModal/LoginModalLazy';
-export { loginReducer } from 'features/AuthByUsername/model/slice/login-slice';
+export type { TLoginState } from 'features/AuthByUsername/model/types/login-state';

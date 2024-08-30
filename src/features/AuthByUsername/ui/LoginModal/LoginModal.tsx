@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -18,7 +19,9 @@ import { getErrorMessage } from 'shared/utils/getErrorMessage';
 import { selectLogin } from 'features/AuthByUsername/model/selectors/select-login/select-login';
 import { LoginForm } from 'features/AuthByUsername/ui/LoginForm/LoginForm';
 
-import { useAppSelector } from 'app/providers/StoreProvider/config/hooks';
+import { useAppSelector, useAppStore } from 'app/providers/StoreProvider/config/hooks';
+
+import { loginReducer } from '../../model/slice/login-slice';
 
 type TLoginModalProps = {
   isOpen: boolean;
@@ -26,9 +29,15 @@ type TLoginModalProps = {
 };
 
 export function LoginModal({ isOpen, onClose }: TLoginModalProps) {
-  const { isLoading, error } = useAppSelector(selectLogin);
+  const store = useAppStore();
+
+  const { isLoading, error } = useAppSelector(selectLogin) || {};
   const { t } = useTranslation();
   const { t: translateAuth } = useTranslation('auth');
+
+  useEffect(() => {
+    store.injectReducers([{ key: 'login', asyncReducer: loginReducer }]);
+  }, [store]);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick={false}>

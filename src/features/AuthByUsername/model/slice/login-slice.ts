@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername/login-by-username';
 import { TLoginState } from 'features/AuthByUsername/model/types/login-state';
