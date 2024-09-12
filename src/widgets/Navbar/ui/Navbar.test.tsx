@@ -5,8 +5,8 @@ import { Navbar } from 'widgets/Navbar/ui/Navbar';
 import { renderComponent } from 'tests/renderComponent';
 
 describe('Navbar', () => {
-  test('render', () => {
+  test('render', async () => {
     renderComponent(<Navbar />);
-    expect(screen.getByTestId('navbar')).toBeInTheDocument();
+    expect(await screen.findByTestId('navbar')).toBeInTheDocument();
   });
 });
