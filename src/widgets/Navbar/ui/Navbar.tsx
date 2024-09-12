@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
@@ -14,10 +13,10 @@ import {
   Button,
   HStack,
   StackDivider,
-  useDisclosure,
 } from '@chakra-ui/react';
 
 import { ERoutes } from 'shared/enums/routes';
+import { useLazyModal } from 'shared/hooks/useLazyModal';
 
 import { selectUserAuthData, userActions } from 'entities/User/public-api';
 
@@ -32,7 +31,7 @@ type TNavbarProps = {
 export function Navbar({ sx }: TNavbarProps) {
   const { toggleColorMode, colorMode } = useColorMode();
   const { t, i18n } = useTranslation();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { ModalComponent: LoginModal, isOpen, onOpen, onClose } = useLazyModal(LoginModalLazy);
   const authData = useSelector(selectUserAuthData);
   const dispatch = useAppDispatch();
 
@@ -115,9 +114,7 @@ export function Navbar({ sx }: TNavbarProps) {
           >
             {t('login')}
           </Button>
-          <Suspense>
-            <LoginModalLazy isOpen={isOpen} onClose={onClose} />
-          </Suspense>
+          <LoginModal isOpen={isOpen} onClose={onClose} />
         </>
       )}
     </Box>
