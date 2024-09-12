@@ -14,21 +14,16 @@ import {
   ModalOverlay,
 } from '@chakra-ui/react';
 
+import { TModalProps } from 'shared/types/modal';
 import { getErrorMessage } from 'shared/utils/getErrorMessage';
 
 import { selectLogin } from 'features/AuthByUsername/model/selectors/select-login/select-login';
+import { loginReducer } from 'features/AuthByUsername/model/slice/login-slice';
 import { LoginForm } from 'features/AuthByUsername/ui/LoginForm/LoginForm';
 
 import { useAppSelector, useAppStore } from 'app/providers/StoreProvider/config/hooks';
 
-import { loginReducer } from '../../model/slice/login-slice';
-
-type TLoginModalProps = {
-  isOpen: boolean;
-  onClose: VoidFunction;
-};
-
-export function LoginModal({ isOpen, onClose }: TLoginModalProps) {
+export function LoginModal({ isOpen, onClose }: TModalProps) {
   const store = useAppStore();
 
   const { isLoading, error } = useAppSelector(selectLogin) || {};
