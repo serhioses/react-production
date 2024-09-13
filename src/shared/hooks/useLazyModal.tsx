@@ -2,6 +2,7 @@ import { useCallback, useState, useTransition, Suspense, FunctionComponent } fro
 
 import { useDisclosure, UseDisclosureReturn } from '@chakra-ui/react';
 
+import { ModalLoader } from 'shared/components/modal/ModalLoader';
 import { TModalProps } from 'shared/types/modal';
 
 type TUseLazyModalResult<T> = Pick<UseDisclosureReturn, 'isOpen' | 'onClose'> & {
@@ -18,7 +19,7 @@ export function useLazyModal<T extends TModalProps>(
 
   const ModalComponent = shouldLoad
     ? (props: T) => (
-        <Suspense>
+        <Suspense fallback={<ModalLoader />}>
           <Component {...props} />
         </Suspense>
       )
