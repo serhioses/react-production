@@ -19,12 +19,15 @@
     "gen-chromatic-config": "node generateChromaticConfig.js",
     "serve": "node ./json-server/index.js",
     "i18n:resources": "i18next-resources-for-ts interface -i ./public/locales/en -o ./src/app/types/resources.generated.d.ts",
-    "prepare": "husky"
+    "prepare": "husky",
+    "gen:theme-typings": "chakra-cli tokens src/shared/theme/theme.ts",
+    "postinstall": "npm run gen:theme-typings"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@chakra-ui/cli": "^2.4.1",
     "@chromatic-com/storybook": "^1.3.3",
     "@storybook/addon-essentials": "^8.0.9",
     "@storybook/addon-interactions": "^8.0.9",

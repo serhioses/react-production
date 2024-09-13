@@ -1,19 +1,9 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import {
-  Alert,
-  AlertDescription,
-  Button,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-} from '@chakra-ui/react';
+import { Alert, AlertDescription, Button } from '@chakra-ui/react';
 
+import { Modal } from 'shared/components/modal/Modal';
 import { TModalProps } from 'shared/types/modal';
 import { getErrorMessage } from 'shared/utils/getErrorMessage';
 
@@ -35,26 +25,23 @@ export function LoginModal({ isOpen, onClose }: TModalProps) {
   }, [store]);
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick={false}>
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>{translateAuth('logIn')}</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <LoginForm onModalClose={onClose} />
-          {error && (
-            <Alert status="error" mt={4}>
-              <AlertDescription>{getErrorMessage(error, t)}</AlertDescription>
-            </Alert>
-          )}
-        </ModalBody>
-
-        <ModalFooter>
-          <Button type="submit" form="login-form" isDisabled={isLoading}>
-            {translateAuth('logIn')}
-          </Button>
-        </ModalFooter>
-      </ModalContent>
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      closeOnOverlayClick={false}
+      headerContent={translateAuth('logIn')}
+      footerContent={
+        <Button type="submit" form="login-form" isDisabled={isLoading}>
+          {translateAuth('logIn')}
+        </Button>
+      }
+    >
+      <LoginForm onModalClose={onClose} />
+      {error && (
+        <Alert status="error" mt={4}>
+          <AlertDescription>{getErrorMessage(error, t)}</AlertDescription>
+        </Alert>
+      )}
     </Modal>
   );
 }
